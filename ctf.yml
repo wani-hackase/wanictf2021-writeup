@@ -1,0 +1,35 @@
+config:
+  time_start: 1632819600
+  time_end: 1636059600
+  mode_permanent: false
+  mode_speed: false
+  param_speed: 10
+  mode_fluid: true
+  param_fluid: 30
+  mode_register: false
+  status_time: 30
+  testing: true
+
+default:
+  max_point: 500
+  min_point: 100
+  public: true
+  submit: true
+  last: true
+  badge: false
+  strings: true
+  zip: true
+
+categories:
+  - name: "Crypto"
+    dir: "cry"
+  - name: "Forensics"
+    dir: "for"
+  - name: "Misc"
+    dir: "mis"
+  - name: "Pwn"
+    dir: "pwn"
+  - name: "Reversing"
+    dir: "rev"
+  - name: "Web"
+    dir: "web"

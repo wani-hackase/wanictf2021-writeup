@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    build: ./app
+    environment:
+      - FLAG_PART1=part1
+      - FLAG_PART2=part2
+      - FLAG_PART3=part3
+      - FLAG_PART4=part4
+      - FLAG_PART5=part5
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+
+networks:
+  backend:

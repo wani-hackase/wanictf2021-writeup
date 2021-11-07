@@ -1,0 +1,4 @@
+django==2.2.20
+psycopg2-binary<2.9
+django-rq
+playwright

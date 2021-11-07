@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Flag Service</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+        <h1 class="display-4">Welcome to Flag Service</h1>
+        <p class="lead">
+            Hi! Welcome to Flag Service.
+            You must be an admin to enjoy our "special" service.
+        </p>
+        {% if session %}
+            <p class="lead">
+                    Welcome, {{ session['username'] }}.
+                    {% if session['admin'] %}
+                        Here is special service!! <kbd>{{ flag }}</kbd>.
+                    {% else %}
+                        Hmm.. You're not admin :(
+                    {% endif %}
+            </p>
+            <form method="post" action="/logout">
+                <button type="submit" class="btn btn-primary mb-2">Logout</button>
+            </form>
+        {% else %}
+
+            <form class="form-inline" method="post" action="/login">
+                <div class="form-group mb-2">
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" data-bv-notempty-message="The username is required" required >
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </form>
+        {% endif %}
+        </div>
+    </body>
+</html>

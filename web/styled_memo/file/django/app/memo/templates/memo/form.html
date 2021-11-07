@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <table class="table">
+    <tr {% if form.title.errors %}class="alert alert-danger"{% endif %}>
+      <th>{{ form.title.label }}</th>
+      <td>{{ form.title.errors }}{{ form.title }}</td>
+    </tr>
+    <tr {% if form.content.errors %}class="alert alert-danger"{% endif %}>
+      <th>{{ form.content.label }}</th>
+      <td>{{ form.content.errors }}{{ form.content }}</td>
+    </tr>
+  </table>
+  <button class="btn btn-primary" type="submit">submit</button>
+</form>
+{% endblock %}

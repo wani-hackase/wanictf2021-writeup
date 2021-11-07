@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    build: ./src/app
+    environment:
+      - FLAG_PART1=y0u
+      - FLAG_PART2=ar3
+      - FLAG_PART3=http
+      - FLAG_PART4=p0st
+      - FLAG_PART5=m@ster!
+    ports:
+      - 80:3000
+    networks:
+      - backend
+
+networks:
+  backend:

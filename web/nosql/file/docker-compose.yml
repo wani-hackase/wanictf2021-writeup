@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  app:
+    build: ./app
+    environment:
+      - FLAG=FAKE{fake}
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+
+  mongo:
+    image: mongo:4.4
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: aduhwsfeok
+      MONGO_INITDB_DATABASE: nosql
+    volumes:
+      - ./mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+
+networks:
+  backend:

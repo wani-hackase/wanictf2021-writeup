@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+{% if user.css %}
+<link href="{{ user.css.url }}" rel="stylesheet">
+{% endif %}
+<style type="text/css">
+  .modal-body {
+    white-space: pre-wrap
+  }
+</style>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  $('#memoContentModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var modal = $(this)
+    modal.find('.modal-title').text(button.data('title'))
+    modal.find('.modal-body').text(button.data('content'))
+    modal.find('.modal-btn-memo-edit').attr("href", button.data('editurl'))
+  })
+</script>
+{% endblock %}
+
+{% block content %}
+{% for memo in memos %}
+<div class="card mb-3">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="memo-title">{{ memo.title }}</h5>
+      <div>
+        <button type="button" class="btn btn-primary btn-memo-detail" data-toggle="modal"
+          data-target="#memoContentModal" data-title="{{ memo.title }}" data-content="{{ memo.content }}"
+          data-editurl="{% url 'memo-edit' memo.id %}">詳細</button>
+        <a class="btn btn-secondary" href="{% url 'memo-edit' memo.id %}">編集</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<div class="modal fade" id="memoContentModal" tabindex="-1" aria-labelledby="memoContentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="memoContentModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <a class="btn btn-secondary modal-btn-memo-edit" href="/">編集</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

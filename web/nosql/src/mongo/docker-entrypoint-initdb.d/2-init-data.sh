@@ -1,0 +1,1 @@
+mongoimport -u admin -p adminasfiweefw --db nosql --collection users --file /docker-entrypoint-initdb.d/users.json --jsonArray

@@ -1,0 +1,7 @@
+version: "3"
+services:
+  aesnoc:
+    build: ./src
+    ports:
+      - 50000:50000
+    restart: always

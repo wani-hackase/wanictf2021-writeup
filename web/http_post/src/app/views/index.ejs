@@ -1,0 +1,129 @@
+<div class="card my-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-9">
+        HTTP POSTに関する問題を5つ用意しました。すべて解いてFLAGを入手してください！<br>
+        FLAGの形式は<br>
+        <code>FLAG{<span class="text-nowrap">[Challenge1のFLAG]</span>_<span class="text-nowrap">[Challenge2のFLAG]</span>_<span class="text-nowrap">[Challenge3のFLAG]</span>_<span class="text-nowrap">[Challenge4のFLAG]</span>_<span class="text-nowrap">[Challenge5のFLAG]</span>}</code>
+      </div>
+      <div class="col-3">
+        <div class="d-flex justify-content-end">
+          <img class="img-fluid" src="/images/wani.png">
+        </div>
+        <p class="text-nowrap">阪大<br>「ワニ博士」</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="challenge1-tab" data-toggle="tab" href="#challenge1" role="tab" aria-controls="challenge1" aria-selected="true">Challenge 1</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="challenge2-tab" data-toggle="tab" href="#challenge2" role="tab" aria-controls="challenge2" aria-selected="false">Challenge 2</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="challenge3-tab" data-toggle="tab" href="#challenge3" role="tab" aria-controls="challenge3" aria-selected="false">Challenge 3</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="challenge4-tab" data-toggle="tab" href="#challenge4" role="tab" aria-controls="challenge4" aria-selected="false">Challenge 4</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="challenge5-tab" data-toggle="tab" href="#challenge5" role="tab" aria-controls="challenge5" aria-selected="false">Challenge 5</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="challenge1" role="tabpanel" aria-labelledby="challenge1-tab">
+      <code><span class="origin"></span>/chal/1</code>に適切なデータをPOSTしてください。
+      <p class="mt-1">
+        <a class="btn btn-primary" data-toggle="collapse" href="#hint1" role="button" aria-expanded="false" aria-controls="hint1">
+        ヒント
+        </a>
+      </p>
+      <div class="collapse" id="hint1">
+        <div class="card">
+          <div class="card-body">
+            ふつうは入力欄があってそこに入力してボタンを押すとPOSTされるのですが、今回は入力欄がないので自分でツールを使ってPOSTリクエストを送信しましょう。
+            WSLやLinux環境がある人は<code>curl</code>というコマンドが使用できると思います。pythonが使える人なら<code>requests</code>というライブラリが使いやすいです。
+            WaniCTFの問題画面から添付されたソースコードをダウンロードして<code>app/app.js</code>を確認してみると、送信すべき内容がわかります。
+            また、POSTした後に帰ってくるレスポンスに<code>request.body</code>の内容を表示しているので活用してください。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="challenge2" role="tabpanel" aria-labelledby="challenge2-tab">
+      <code><span class="origin"></span>/chal/2</code>に適切なデータをPOSTしてください。
+      <p class="mt-1">
+        <a class="btn btn-primary" data-toggle="collapse" href="#hint2" role="button" aria-expanded="false" aria-controls="hint2">
+        ヒント
+        </a>
+      </p>
+      <div class="collapse" id="hint2">
+        <div class="card">
+          <div class="card-body">
+            添付されたソースコードの<code>app/app.js</code>を確認してみると、リクエストヘッダを確認して条件分岐をしていることがわかります。
+            challenge1のヒントで紹介したツールには、任意のリクエストヘッダを送信するためのオプションがあるので、調べてみてください。
+            また、POSTした後に帰ってくるレスポンスに<code>request.headers</code>の内容を表示しているので活用してください。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="challenge3" role="tabpanel" aria-labelledby="challenge3-tab">
+      <code><span class="origin"></span>/chal/3</code>に適切なデータをPOSTしてください。
+      <p class="mt-1">
+        <a class="btn btn-primary" data-toggle="collapse" href="#hint3" role="button" aria-expanded="false" aria-controls="hint3">
+        ヒント
+        </a>
+      </p>
+      <div class="collapse" id="hint3">
+        <div class="card">
+          <div class="card-body">
+            添付されたソースコードの<code>app/app.js</code>を確認してみると、<code>data.hoge</code>のような深いプロパティに対してチェックを行おうとしています。
+            このような場合は<code>data</code>を連想配列形式にする必要があります。そのためには、<a href="https://github.com/ljharb/qs#parsing-objects">keyにブラケット表記を用いる</a>かJSON形式を使用します。<br>
+            ※サーバで使用しているライブラリや設定によって使えるかどうかが変化します。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="challenge4" role="tabpanel" aria-labelledby="challenge4-tab">
+      <code><span class="origin"></span>/chal/4</code>に適切なデータをPOSTしてください。
+      <p class="mt-1">
+        <a class="btn btn-primary" data-toggle="collapse" href="#hint4" role="button" aria-expanded="false" aria-controls="hint4">
+        ヒント
+        </a>
+      </p>
+      <div class="collapse" id="hint4">
+        <div class="card">
+          <div class="card-body">
+            添付されたソースコードの<code>app/app.js</code>を確認してみると、送られたデータが数字や<code>null</code>であるかチェックしています。
+            文字列ではなく数字や<code>null</code>などを送信したい場合はJSON形式で送信します。<br>
+            ※サーバで使用しているライブラリや設定によって使えるかどうかが変化します。
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="challenge5" role="tabpanel" aria-labelledby="challenge5-tab">
+      <code><span class="origin"></span>/chal/5</code>に適切なデータをPOSTしてください。
+      <p class="mt-1">
+        <a class="btn btn-primary" data-toggle="collapse" href="#hint5" role="button" aria-expanded="false" aria-controls="hint5">
+        ヒント
+        </a>
+      </p>
+      <div class="collapse" id="hint5">
+        <div class="card">
+          <div class="card-body">
+            添付されたソースコードの<code>app/app.js</code>を確認してみると、送信されたファイルのハッシュをチェックしています。
+            画像を送信する時は<code>multipart/form-data</code>形式を使用します。<br>
+            ※サーバ側の実装として受け取る形式をJSON形式で統一したい場合など例外あり
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    $(".origin").text(location.origin);
+  });
+</script>

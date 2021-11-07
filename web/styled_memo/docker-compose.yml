@@ -1,0 +1,56 @@
+version: "3"
+
+networks:
+  backend:
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - static:/static/
+      - media:/media/
+      - ./src/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - backend
+  django:
+    build: ./src/docker/uwsgi
+    volumes:
+      - ./src/django:/app
+      - static:/static
+      - media:/media/
+      - ./src/docker/uwsgi/uwsgi.ini:/etc/uwsgi/uwsgi.ini
+    environment:
+      - FLAG=FLAG{CSS_Injecti0n_us1ng_d1r3ctory_tr@versal}
+      - ADMIN_PASSWORD=da679123ejndaws8921qwd89asc
+    networks:
+      - backend
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=develop
+      - POSTGRES_PASSWORD=test
+    networks:
+      - backend
+  redis:
+    image: redis:latest
+    networks:
+      - backend
+  django-rq:
+    build: ./src/docker/rq
+    volumes:
+      - ./src/django:/app
+    networks:
+      - backend
+    # crawlerのインスタンス数, マシン性能などによって要調整
+    # deploy:
+    #   replicas: 3
+
+volumes:
+  static:
+    driver: local
+  media:
+    driver: local

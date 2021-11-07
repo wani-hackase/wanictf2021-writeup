@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  traversal-web:
+    build: ./src/web
+  traversal-lb:
+    build: ./src/lb
+    ports:
+      - 80:80

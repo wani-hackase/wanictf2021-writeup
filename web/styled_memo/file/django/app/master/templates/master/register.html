@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <table class="table">
+    <tr {% if form.username.errors %}class="alert alert-danger"{% endif %}>
+      <th>{{ form.username.label }}</th>
+      <td>{{ form.username.errors }}{{ form.username }}</td>
+    </tr>
+    <tr {% if form.password1.errors %}class="alert alert-danger"{% endif %}>
+      <th>{{ form.password1.label }}</th>
+      <td>{{ form.password1.errors }}{{ form.password1 }}</td>
+    </tr>
+    <tr {% if form.password2.errors %}class="alert alert-danger"{% endif %}>
+      <th>{{ form.password2.label }}</th>
+      <td>{{ form.password2.errors }}{{ form.password2 }}</td>
+    </tr>
+  </table>
+  <button class="btn btn-primary" type="submit">submit</button>
+</form>
+{% endblock %}
