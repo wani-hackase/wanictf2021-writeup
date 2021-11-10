@@ -14,18 +14,18 @@ writer: Laika
 
 ## 解法
 
-> ライトテーマの方は[こちら](https://github.com/wani-hackase/wanictf2021-writeup/blob/main/cry/sweet_curve/README_light.md)
+> ダークテーマの方は[こちら](https://github.com/wani-hackase/wanictf2021-writeup/blob/main/cry/sweet_curve/README.md)
 
-有限体上の楕円曲線 <img src="https://latex.codecogs.com/svg.image?%5ccolor{white}%20E%3A%20y%5E2%20%3D%20x%5E3%20-%20x%20%2B%201%20%5Cpmod%20p"> と、2点 <img src="https://latex.codecogs.com/svg.image?%5ccolor{white}P%28x_P%2C%20y_P%29%2C%20Q%28x_Q%2C%20y_Q%29"/> が与えられる。これに対して <img src="https://latex.codecogs.com/svg.image?%5ccolor{white}P%2BQ"> を計算すると、そのx座標がflagとなっている。
+有限体上の楕円曲線 <img src="https://latex.codecogs.com/svg.image?%5ccolor{black}%20E%3A%20y%5E2%20%3D%20x%5E3%20-%20x%20%2B%201%20%5Cpmod%20p"> と、2点 <img src="https://latex.codecogs.com/svg.image?%5ccolor{black}P%28x_P%2C%20y_P%29%2C%20Q%28x_Q%2C%20y_Q%29"/> が与えられる。これに対して <img src="https://latex.codecogs.com/svg.image?%5ccolor{black}P%2BQ"> を計算すると、そのx座標がflagとなっている。
 
 
 ###  解法1
-楕円曲線上の2点の加算は、<img src="https://latex.codecogs.com/svg.image?%5ccolor{white}R%20=%20P%2BQ"> とすると
+楕円曲線上の2点の加算は、<img src="https://latex.codecogs.com/svg.image?%5ccolor{black}R%20=%20P%2BQ"> とすると
 
-<img src="https://latex.codecogs.com/svg.image?%5ccolor{white}%5Cleft%5C%7B%0A%5Cbegin%7Baligned%7D%0Ax_R%20%26%3D%20%5Calpha%5E2%20-%20x_P%20-%20x_Q%20%5C%5C%20%5Cnonumber%0Ay_R%20%26%3D%20-%5Calpha%20x_R%20-%20%5Cbeta%20%5Cnonumber%0A%5Cend%7Baligned%7D%0A%5Cright.">
+<img src="https://latex.codecogs.com/svg.image?%5ccolor{black}%5Cleft%5C%7B%0A%5Cbegin%7Baligned%7D%0Ax_R%20%26%3D%20%5Calpha%5E2%20-%20x_P%20-%20x_Q%20%5C%5C%20%5Cnonumber%0Ay_R%20%26%3D%20-%5Calpha%20x_R%20-%20%5Cbeta%20%5Cnonumber%0A%5Cend%7Baligned%7D%0A%5Cright.">
 で与えられる。ただし、
 
-<img src="https://latex.codecogs.com/svg.image?%5ccolor{white}%5Cbegin%7Baligned%7D%0A%5Calpha%20%26%3D%20%5Cfrac%7By_Q-y_P%7D%7Bx_Q-x_P%7D%20%5C%5C%0A%5Cbeta%20%26%3D%20%5Cfrac%7By_Px_Q%20-%20y_Qx_P%7D%7Bx_Q-x_P%7D%0A%5Cend%7Baligned%7D">
+<img src="https://latex.codecogs.com/svg.image?%5ccolor{black}%5Cbegin%7Baligned%7D%0A%5Calpha%20%26%3D%20%5Cfrac%7By_Q-y_P%7D%7Bx_Q-x_P%7D%20%5C%5C%0A%5Cbeta%20%26%3D%20%5Cfrac%7By_Px_Q%20-%20y_Qx_P%7D%7Bx_Q-x_P%7D%0A%5Cend%7Baligned%7D">
 とする。
 
 
