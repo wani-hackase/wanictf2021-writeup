@@ -14,6 +14,9 @@ AES-CBCか...って、あれ？
 `nc aesnoc.crypto.wanictf.org 50000`
 
 ## 解法
+
+> ライトテーマの方は[こちら](https://github.com/wani-hackase/wanictf2021-writeup/blob/main/cry/aesnoc/README_light.md)
+
 AES-ECBをベースに独自実装したAES-NOCなるもので暗号化されている。
 これはAES-CBCのXORをとる箇所が変わったものと考えると良い。
 
